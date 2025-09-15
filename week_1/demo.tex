@@ -1,0 +1,553 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Demonstration},
+  pdfauthor={Rohan Alexander},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Demonstration}
+\author{Rohan Alexander}
+\date{8 September, 2025}
+\begin{document}
+\maketitle
+
+
+\section{Introduction}\label{introduction}
+
+\texttt{Python} is a general-purpose programming language created by
+Guido van Rossum. \texttt{Python} version 0.9.0 was released in February
+1991, and the current version, 3.13, was released in October 2024. It
+was named \texttt{Python} after \emph{Monty Python's Flying Circus}.
+
+\texttt{Python} is a popular language in machine learning, but it was
+designed, and is more commonly used, for more general software
+applications. This means that we will especially rely on packages when
+we use Python for data science.
+
+\subsection{Python, VS Code, and uv}\label{python-vs-code-and-uv}
+
+There are other options, but the community more broadly has settled on
+VS Code (you can pick other options if you have a good reason to do
+that). You can download VS Code for free
+\href{https://code.visualstudio.com}{here} and then install it.
+
+Open VS Code (Figure~\ref{fig-vscodesetup-a}), and open a new Terminal:
+Terminal -\textgreater{} New Terminal (Figure~\ref{fig-vscodesetup-b}).
+We can then install \texttt{uv}, which is a Python package manager, by
+putting
+\texttt{curl\ -LsSf\ https://astral.sh/uv/install.sh\ \textbar{}\ sh}
+into the Terminal and pressing ``return/enter'' afterwards
+(Figure~\ref{fig-vscodesetup-c}). Finally, to install Python we can use
+\texttt{uv} by putting \texttt{uv\ python\ install} into that Terminal
+and pressing ``return/enter'' afterwards
+(Figure~\ref{fig-vscodesetup-d}).
+
+\begin{figure}
+
+\begin{minipage}{\linewidth}
+
+\centering{
+
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{B-VS_Code-1.png}
+
+}
+
+\subcaption{\label{fig-vscodesetup-a}Opening VS Code}
+
+\end{minipage}%
+\newline
+\begin{minipage}{\linewidth}
+
+\centering{
+
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{B-VS_Code-2.png}
+
+}
+
+\subcaption{\label{fig-vscodesetup-b}Opening a Terminal in VS Code}
+
+\end{minipage}%
+\newline
+\begin{minipage}{\linewidth}
+
+\centering{
+
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{B-VS_Code-3.png}
+
+}
+
+\subcaption{\label{fig-vscodesetup-c}Install uv}
+
+\end{minipage}%
+\newline
+\begin{minipage}{\linewidth}
+
+\centering{
+
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{B-VS_Code-4.png}
+
+}
+
+\subcaption{\label{fig-vscodesetup-d}Install Python}
+
+\end{minipage}%
+
+\caption{\label{fig-vscodesetup}Opening VS Code and a new terminal and
+then installing uv and Python}
+
+\end{figure}%
+
+\section{Project set-up}\label{project-set-up}
+
+We are going to get started with an example that downloads some data
+from Open Data Toronto. To start, we need to create a project, which
+will allow all our code to be self-contained.
+
+Open VS Code and open a new Terminal: ``Terminal'' -\textgreater{} ``New
+Terminal''. Then use Unix shell commands to navigate to where you want
+to create your folder. For instance, use \texttt{ls} to list all the
+folders in the current directory, then move to one using \texttt{cd} and
+then the name of the folder. If you need to go back one level then use
+\texttt{..}.
+
+Once you are happy with where you are going to create this new folder,
+we can use \texttt{uv\ init} in the Terminal to do this, pressing
+``return/enter'' afterwards (\texttt{cd} then moves to the new folder
+``shelter\_usage'').
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| eval: false}
+\NormalTok{\#| echo: true}
+
+\NormalTok{uv init week\_1}
+\NormalTok{cd week\_1}
+\end{Highlighting}
+\end{Shaded}
+
+By default, there will be a script in the example folder. We want to use
+\texttt{uv\ run} to run that script, which will then create an project
+environment for us.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| eval: false}
+\NormalTok{\#| echo: true}
+
+\NormalTok{uv run hello.py}
+\end{Highlighting}
+\end{Shaded}
+
+A project environment is specific to that project. We will use the
+package \texttt{numpy} to simulate data. We need to add this package to
+our environment with \texttt{uv\ add}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| eval: false}
+\NormalTok{\#| echo: true}
+
+\NormalTok{uv add numpy}
+\end{Highlighting}
+\end{Shaded}
+
+We can then modify \texttt{hello.py} to use \texttt{numpy} to simulate
+from the Normal distribution.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+
+\KeywordTok{def}\NormalTok{ main():}
+\NormalTok{    np.random.seed(}\DecValTok{853}\NormalTok{)}
+
+\NormalTok{    mu, sigma }\OperatorTok{=} \DecValTok{0}\NormalTok{, }\DecValTok{1}
+\NormalTok{    sample\_sizes }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\DecValTok{10000}\NormalTok{]}
+\NormalTok{    differences }\OperatorTok{=}\NormalTok{ []}
+
+    \ControlFlowTok{for}\NormalTok{ size }\KeywordTok{in}\NormalTok{ sample\_sizes:}
+\NormalTok{        sample }\OperatorTok{=}\NormalTok{ np.random.normal(mu, sigma, size)}
+\NormalTok{        sample\_mean }\OperatorTok{=}\NormalTok{ np.mean(sample)}
+\NormalTok{        diff }\OperatorTok{=} \BuiltInTok{abs}\NormalTok{(mu }\OperatorTok{{-}}\NormalTok{ sample\_mean)}
+\NormalTok{        differences.append(diff)}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Sample size: }\SpecialCharTok{\{}\NormalTok{size}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"  Difference between sample and population mean: }\SpecialCharTok{\{}\BuiltInTok{round}\NormalTok{(diff, }\DecValTok{3}\NormalTok{)}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+        
+\ControlFlowTok{if} \VariableTok{\_\_name\_\_} \OperatorTok{==} \StringTok{"\_\_main\_\_"}\NormalTok{:}
+\NormalTok{    main()}
+\end{Highlighting}
+\end{Shaded}
+
+After we have modified and saved \texttt{hello.py} we can run it with
+\texttt{uv\ run} in exactly the same way as before.
+
+At this point we should close VS Code. We want to re-open it to make
+sure that our project environment is working as it needs to. In VS Code,
+a project is a self-contained folder. You can open a folder with
+``File'' -\textgreater{} ``Open Folder\ldots{}'' and then select the
+relevant folder, in this case ``week\_1''. You should then be able to
+re-run \texttt{uv\ run\ hello.py} and it should work.
+
+\section{Simulate}\label{simulate}
+
+We would like to more thoroughly simulate the dataset that we are
+interested in. We will use \texttt{polars} to provide a dataframe to
+store our simulated results, so we should add this to our environment
+with \texttt{uv\ add}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#| eval: false}
+\NormalTok{\#| echo: true}
+
+\NormalTok{uv add polars}
+\end{Highlighting}
+\end{Shaded}
+
+Create a new Python file called \texttt{00-simulate\_data.py}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\#\#\# Preamble \#\#\#\#}
+\CommentTok{\# Purpose: Simulates a dataset of daily shelter usage}
+\CommentTok{\# Author: Rohan Alexander}
+\CommentTok{\# Date: 8 September 2025}
+\CommentTok{\# Contact: rohan.alexander@utoronto.ca}
+\CommentTok{\# License: MIT}
+\CommentTok{\# Pre{-}requisites:}
+\CommentTok{\# {-} Add \textasciigrave{}polars\textasciigrave{}: uv add polars}
+\CommentTok{\# {-} Add \textasciigrave{}numpy\textasciigrave{}: uv add numpy}
+\CommentTok{\# {-} Add \textasciigrave{}datetime\textasciigrave{}: uv add datetime}
+
+
+\CommentTok{\#\#\#\# Workspace setup \#\#\#\#}
+\ImportTok{import}\NormalTok{ polars }\ImportTok{as}\NormalTok{ pl}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ date}
+
+\NormalTok{rng }\OperatorTok{=}\NormalTok{ np.random.default\_rng(seed}\OperatorTok{=}\DecValTok{853}\NormalTok{)}
+
+
+\CommentTok{\#\#\#\# Simulate data \#\#\#\#}
+\CommentTok{\# Simulate 10 shelters and some set capacity}
+\NormalTok{shelters\_df }\OperatorTok{=}\NormalTok{ pl.DataFrame(}
+\NormalTok{    \{}
+        \StringTok{"Shelters"}\NormalTok{: [}\SpecialStringTok{f"Shelter }\SpecialCharTok{\{}\NormalTok{i}\SpecialCharTok{\}}\SpecialStringTok{"} \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{11}\NormalTok{)],}
+        \StringTok{"Capacity"}\NormalTok{: rng.integers(low}\OperatorTok{=}\DecValTok{10}\NormalTok{, high}\OperatorTok{=}\DecValTok{100}\NormalTok{, size}\OperatorTok{=}\DecValTok{10}\NormalTok{),}
+\NormalTok{    \}}
+\NormalTok{)}
+
+\CommentTok{\# Create data frame of dates}
+\NormalTok{dates }\OperatorTok{=}\NormalTok{ pl.date\_range(}
+\NormalTok{    start}\OperatorTok{=}\NormalTok{date(}\DecValTok{2024}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{), end}\OperatorTok{=}\NormalTok{date(}\DecValTok{2024}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{31}\NormalTok{), interval}\OperatorTok{=}\StringTok{"1d"}\NormalTok{, eager}\OperatorTok{=}\VariableTok{True}
+\NormalTok{).alias(}\StringTok{"Dates"}\NormalTok{)}
+
+\CommentTok{\# Convert dates into a data frame}
+\NormalTok{dates\_df }\OperatorTok{=}\NormalTok{ pl.DataFrame(dates)}
+
+\CommentTok{\# Combine dates and shelters}
+\NormalTok{data }\OperatorTok{=}\NormalTok{ dates\_df.join(shelters\_df, how}\OperatorTok{=}\StringTok{"cross"}\NormalTok{)}
+
+\CommentTok{\# Add usage as a Poisson draw}
+\NormalTok{poisson\_draw }\OperatorTok{=}\NormalTok{ rng.poisson(lam}\OperatorTok{=}\NormalTok{data[}\StringTok{"Capacity"}\NormalTok{])}
+\NormalTok{usage }\OperatorTok{=}\NormalTok{ np.minimum(poisson\_draw, data[}\StringTok{"Capacity"}\NormalTok{])}
+
+\NormalTok{data }\OperatorTok{=}\NormalTok{ data.with\_columns([pl.Series(}\StringTok{"Usage"}\NormalTok{, usage)])}
+
+\NormalTok{data.write\_parquet(}\StringTok{"simulated\_data.parquet"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We can then import our simulated dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ polars }\ImportTok{as}\NormalTok{ pl}
+
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pl.read\_parquet(}\StringTok{"simulated\_data.parquet"}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(df.head(}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Acquire}\label{acquire}
+
+Use this source:
+https://open.toronto.ca/dataset/daily-shelter-overnight-service-occupancy-capacity/
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ polars }\ImportTok{as}\NormalTok{ pl}
+
+\CommentTok{\# URL of the CSV file}
+\NormalTok{url }\OperatorTok{=} \StringTok{"https://ckan0.cf.opendata.inter.prod{-}toronto.ca/dataset/21c83b32{-}d5a8{-}4106{-}a54f{-}010dbe49f6f2/resource/ffd20867{-}6e3c{-}4074{-}8427{-}d63810edf231/download/Daily}\SpecialCharTok{\%20s}\StringTok{helter}\SpecialCharTok{\%20o}\StringTok{vernight}\SpecialCharTok{\%20o}\StringTok{ccupancy.csv"}
+
+\CommentTok{\# Read the CSV file into a Polars DataFrame}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pl.read\_csv(url)}
+
+\CommentTok{\# Save the raw data}
+\NormalTok{df.write\_parquet(}\StringTok{"shelter\_usage.parquet"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We are likely only interested in a few columns and only rows where there
+are data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ polars }\ImportTok{as}\NormalTok{ pl}
+
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pl.read\_parquet(}\StringTok{"shelter\_usage.parquet"}\NormalTok{)}
+
+\CommentTok{\# Select specific columns}
+\NormalTok{selected\_columns }\OperatorTok{=}\NormalTok{ [}\StringTok{"OCCUPANCY\_DATE"}\NormalTok{, }\StringTok{"SHELTER\_ID"}\NormalTok{, }\StringTok{"OCCUPIED\_BEDS"}\NormalTok{, }\StringTok{"CAPACITY\_ACTUAL\_BED"}\NormalTok{]}
+
+\NormalTok{selected\_df }\OperatorTok{=}\NormalTok{ df.select(selected\_columns)}
+
+\CommentTok{\# Filter to only rows that have data}
+\NormalTok{filtered\_df }\OperatorTok{=}\NormalTok{ selected\_df.}\BuiltInTok{filter}\NormalTok{(df[}\StringTok{"OCCUPIED\_BEDS"}\NormalTok{].is\_not\_null())}
+
+\BuiltInTok{print}\NormalTok{(filtered\_df.head())}
+
+\NormalTok{renamed\_df }\OperatorTok{=}\NormalTok{ filtered\_df.rename(\{}\StringTok{"OCCUPANCY\_DATE"}\NormalTok{: }\StringTok{"date"}\NormalTok{,}
+                                 \StringTok{"SHELTER\_ID"}\NormalTok{: }\StringTok{"Shelters"}\NormalTok{,}
+                                 \StringTok{"CAPACITY\_ACTUAL\_BED"}\NormalTok{: }\StringTok{"Capacity"}\NormalTok{,}
+                                 \StringTok{"OCCUPIED\_BEDS"}\NormalTok{: }\StringTok{"Usage"}
+\NormalTok{                                 \})}
+
+\BuiltInTok{print}\NormalTok{(renamed\_df.head())}
+
+\NormalTok{renamed\_df.write\_parquet(}\StringTok{"cleaned\_shelter\_usage.parquet"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Explore}\label{explore}
+
+Manipulate the data into a summary table.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ polars }\ImportTok{as}\NormalTok{ pl}
+
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pl.read\_parquet(}\StringTok{"cleaned\_shelter\_usage.parquet"}\NormalTok{)}
+
+\CommentTok{\# Convert the date column to datetime and rename it for clarity}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ df.with\_columns(pl.col(}\StringTok{"date"}\NormalTok{).}\BuiltInTok{str}\NormalTok{.strptime(pl.Date, }\StringTok{"\%Y{-}\%m{-}}\SpecialCharTok{\%d}\StringTok{"}\NormalTok{).alias(}\StringTok{"date"}\NormalTok{))}
+
+\CommentTok{\# Group by "Dates" and calculate total "Capacity" and "Usage"}
+\NormalTok{aggregated\_df }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    df.group\_by(}\StringTok{"date"}\NormalTok{)}
+\NormalTok{    .agg([}
+\NormalTok{        pl.col(}\StringTok{"Capacity"}\NormalTok{).}\BuiltInTok{sum}\NormalTok{().alias(}\StringTok{"Total\_Capacity"}\NormalTok{),}
+\NormalTok{        pl.col(}\StringTok{"Usage"}\NormalTok{).}\BuiltInTok{sum}\NormalTok{().alias(}\StringTok{"Total\_Usage"}\NormalTok{)}
+\NormalTok{    ])}
+\NormalTok{    .sort(}\StringTok{"date"}\NormalTok{)  }\CommentTok{\# Sort the results by date}
+\NormalTok{)}
+
+\CommentTok{\# Display the aggregated DataFrame}
+\BuiltInTok{print}\NormalTok{(aggregated\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+
+
+
+
+\end{document}
