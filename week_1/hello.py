@@ -16,5 +16,6 @@ def main():
         print(f"  Difference between sample and population mean: {round(diff, 3)}")
 
     print("Follow first lecture")
+    print("only 1 file change")
 if __name__ == "__main__":
     main()
