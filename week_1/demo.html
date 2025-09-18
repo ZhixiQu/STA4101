@@ -208,7 +208,7 @@ uv run hello.py</code></pre>
 
 uv add numpy</code></pre>
 <p>We can then modify <code>hello.py</code> to use <code>numpy</code> to simulate from the Normal distribution.</p>
-<div id="f628e47e" class="cell" data-message="false" data-execution_count="1">
+<div id="8284ea17" class="cell" data-message="false" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
@@ -240,7 +240,7 @@ uv add numpy</code></pre>
 
 uv add polars</code></pre>
 <p>Create a new Python file called <code>00-simulate_data.py</code>.</p>
-<div id="0171a6c5" class="cell" data-message="false" data-execution_count="2">
+<div id="ef2fa345" class="cell" data-message="false" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### Preamble ####</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Purpose: Simulates a dataset of daily shelter usage</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: Rohan Alexander</span></span>
@@ -290,7 +290,7 @@ uv add polars</code></pre>
 <span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>data.write_parquet(<span class="st">"simulated_data.parquet"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can then import our simulated dataset.</p>
-<div id="25e9c62a" class="cell" data-message="false" data-execution_count="3">
+<div id="cceba1b4" class="cell" data-message="false" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_parquet(<span class="st">"simulated_data.parquet"</span>)</span>
@@ -301,7 +301,7 @@ uv add polars</code></pre>
 <section id="acquire" class="level1">
 <h1>Acquire</h1>
 <p>Use this source: https://open.toronto.ca/dataset/daily-shelter-overnight-service-occupancy-capacity/</p>
-<div id="55e710dd" class="cell" data-message="false" data-execution_count="4">
+<div id="8b59d4b3" class="cell" data-message="false" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># URL of the CSV file</span></span>
@@ -314,7 +314,7 @@ uv add polars</code></pre>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>df.write_parquet(<span class="st">"shelter_usage.parquet"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We are likely only interested in a few columns and only rows where there are data.</p>
-<div id="a52d6009" class="cell" data-message="false" data-execution_count="5">
+<div id="c0f6e248" class="cell" data-message="false" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_parquet(<span class="st">"shelter_usage.parquet"</span>)</span>
@@ -343,7 +343,7 @@ uv add polars</code></pre>
 <section id="explore" class="level1">
 <h1>Explore</h1>
 <p>Manipulate the data into a summary table.</p>
-<div id="0800aa4b" class="cell" data-message="false" data-execution_count="6">
+<div id="34cdaaef" class="cell" data-message="false" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_parquet(<span class="st">"cleaned_shelter_usage.parquet"</span>)</span>
