@@ -14,6 +14,7 @@ def main():
         differences.append(diff)
         print(f"Sample size: {size}")
         print(f"  Difference between sample and population mean: {round(diff, 3)}")
-    print("hello world")
+
+    print("Follow first lecture")
 if __name__ == "__main__":
     main()
