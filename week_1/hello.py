@@ -18,5 +18,6 @@ def main():
     print("Follow first lecture")
     print("only 1 file change")
     print("modify hello.py")
+    print(111)
 if __name__ == "__main__":
     main()
